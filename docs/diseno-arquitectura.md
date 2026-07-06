@@ -5,7 +5,7 @@
 - **Estado:** Aprobado para especificación
 - **Caso:** Concesionaria con ERP monolítico centralizado que requiere portal web
   (inventario, cotización, reserva) e integración con socios (bancos, aseguradoras).
-- **Referencia estado actual:** [`referencia_erp_actual.md`](../../../referencia_erp_actual.md)
+- **Referencia estado actual:** [`referencia_erp_actual.md`](../referencia_erp_actual.md)
 
 ---
 

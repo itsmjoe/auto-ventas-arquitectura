@@ -1,4 +1,4 @@
-name: CI Piloto Cotización
+name: CI Pilotos
 
 on:
   push:
@@ -8,9 +8,12 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        servicio: [piloto-cotizacion, piloto-reserva]
     defaults:
       run:
-        working-directory: piloto-cotizacion
+        working-directory: ${{ matrix.servicio }}
     steps:
       - uses: actions/checkout@v4
 

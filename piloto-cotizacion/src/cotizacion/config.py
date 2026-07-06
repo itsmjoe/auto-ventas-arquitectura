@@ -14,6 +14,9 @@ class Settings(BaseSettings):
     timeout_socios: float = 2.0
     modo_banco: str = "ok"
     modo_aseguradora: str = "ok"
+    # Si se define, el catálogo se lee del microservicio real por HTTP;
+    # si queda vacío, se usa el mock en memoria. Mismo puerto, distinto adaptador.
+    catalogo_url: str | None = None
 
 
 def get_settings() -> Settings:

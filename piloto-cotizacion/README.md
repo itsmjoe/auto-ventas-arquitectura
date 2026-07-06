@@ -13,8 +13,19 @@ src/cotizacion/
 ├── application/   # casos de uso + puertos (interfaces)
 └── adapters/
     ├── inbound/rest/   # API FastAPI
-    └── outbound/       # mocks ERP / banco / aseguradora / repositorio
+    └── outbound/       # ERP mock + catálogo HTTP + banco / aseguradora / repositorio
 ```
+
+### Un puerto, dos adaptadores (mock ↔ microservicio real)
+El catálogo se consume por el puerto `CatalogoPort`. Detrás hay dos adaptadores
+intercambiables **sin tocar dominio ni caso de uso**:
+- `ERPCatalogoMock` — datos en memoria (por defecto).
+- `CatalogoHttpClient` — llama a un microservicio real por HTTP (y traduce su JSON al
+  modelo de dominio: Anti-Corruption Layer).
+
+Se elige por configuración: si defines `COTIZACION_CATALOGO_URL`, se usa el adaptador
+HTTP; si no, el mock. Ver `deps.py`. Es la demostración concreta de cómo hexagonal deja
+pasar de "monolito con mock" a "microservicio en red" cambiando solo el enchufe.
 
 - El **dominio** no depende de ningún framework.
 - Los **casos de uso** dependen de **puertos**; los **adaptadores** los implementan.

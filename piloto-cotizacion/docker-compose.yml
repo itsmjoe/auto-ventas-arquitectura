@@ -1,0 +1,12 @@
+services:
+  cotizacion:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      COTIZACION_TASA_IMPUESTO: "0.12"
+      COTIZACION_VIGENCIA_MINUTOS: "60"
+      COTIZACION_TIMEOUT_SOCIOS: "2.0"
+      COTIZACION_MODO_BANCO: "ok"
+      COTIZACION_MODO_ASEGURADORA: "ok"
+    restart: unless-stopped
